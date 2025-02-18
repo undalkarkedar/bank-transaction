@@ -1,0 +1,129 @@
+<div class="transaction-edit">
+  <form
+    *ngIf="transactionForm"
+    [formGroup]="transactionForm"
+    (ngSubmit)="onSubmit()"
+  >
+    <div class="mb-3">
+      <label for="description">Description:</label>
+      <input
+        type="text"
+        id="description"
+        class="form-control"
+        formControlName="description"
+      />
+      <div
+        *ngIf="
+          transactionForm.get('description')?.invalid &&
+          (transactionForm.get('description')?.dirty ||
+            transactionForm.get('description')?.touched)
+        "
+        class="text-danger"
+      >
+        Description is required.
+      </div>
+    </div>
+
+    <div class="mb-3">
+      <label for="amount" class="form-label">Amount:</label>
+      <input
+        type="number"
+        id="amount"
+        class="form-control"
+        formControlName="amount"
+      />
+      <div
+        *ngIf="
+          transactionForm.get('amount')?.invalid &&
+          (transactionForm.get('amount')?.dirty ||
+            transactionForm.get('amount')?.touched)
+        "
+        class="text-danger"
+      >
+        <div *ngIf="transactionForm.get('amount')?.errors?.['required']">
+          Amount is required.
+        </div>
+        <div *ngIf="transactionForm.get('amount')?.errors?.['pattern']">
+          Amount must be a valid number.
+        </div>
+      </div>
+    </div>
+
+    <div class="mb-3">
+      <label for="date" class="form-label">Date:</label>
+      <input
+        type="text"
+        id="date"
+        class="form-control"
+        formControlName="date"
+      />
+      <div
+        *ngIf="
+          transactionForm.get('date')?.invalid &&
+          (transactionForm.get('date')?.dirty ||
+            transactionForm.get('date')?.touched)
+        "
+        class="text-danger"
+      >
+        <div *ngIf="transactionForm.get('date')?.errors?.['required']">
+          Date is required.
+        </div>
+        <div *ngIf="transactionForm.get('date')?.errors?.['pattern']">
+          Date must be in YYYY-MM-DD format.
+        </div>
+      </div>
+    </div>
+
+    <div class="mb-3">
+      <label for="type" class="form-label">Transaction Type:</label>
+      <select id="type" class="form-control" formControlName="type">
+        <option value="Credit">Credit</option>
+        <option value="Debit">Debit</option>
+      </select>
+      <div
+        *ngIf="
+          transactionForm.get('type')?.invalid &&
+          (transactionForm.get('type')?.dirty ||
+            transactionForm.get('type')?.touched)
+        "
+        class="text-danger"
+      >
+        Transaction type is required.
+      </div>
+    </div>
+
+    <div class="mb-3">
+      <label for="accountNumber" class="form-label">Account Number:</label>
+      <input
+        type="text"
+        id="accountNumber"
+        class="form-control"
+        formControlName="accountNumber"
+      />
+      <div
+        *ngIf="
+          transactionForm.get('accountNumber')?.invalid &&
+          (transactionForm.get('accountNumber')?.dirty ||
+            transactionForm.get('accountNumber')?.touched)
+        "
+        class="text-danger"
+      >
+        <div *ngIf="transactionForm.get('accountNumber')?.errors?.['required']">
+          Account number is required.
+        </div>
+        <div
+          *ngIf="transactionForm.get('accountNumber')?.errors?.['characters']"
+        >
+          Account number contains invalid characters.
+        </div>
+      </div>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Save</button>
+    <button type="button" class="btn btn-secondary" (click)="goBack()">
+      Cancel
+    </button>
+  </form>
+  <div *ngIf="loading">Loading...</div>
+  <div *ngIf="error" class="text-center text-danger">{{ error }}</div>
+</div>

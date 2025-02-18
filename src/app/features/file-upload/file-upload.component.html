@@ -1,0 +1,8 @@
+<app-loader [progress]="progress"></app-loader>
+<div class="file-upload-container">
+  <input type="file" id="fileInput" (change)="onFileSelected($event)" />
+  <label for="fileInput" class="file-upload-label btn btn-primary">Choose File</label>
+</div>
+@if(errorMessage){
+<span class="text-danger text-center text-small">{{ errorMessage }}</span>
+}

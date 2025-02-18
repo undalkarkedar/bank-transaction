@@ -1,0 +1,34 @@
+@use "sass:color";
+@use "variables" as *;
+
+.transaction-list {
+  padding: 20px;
+
+  .ag-theme-alpine {
+    .ag-header {
+      background-color: $primary-color;
+      color: $dark-color;
+      font-weight: $font-weight-bold;
+    }
+
+    .transaction-credit {
+      color: $credit-color; // Green for credits
+    }
+
+    .transaction-debit {
+      color: $debit-color; // Red for debits
+    }
+  }
+
+  .delete-btn {
+    background-color: $danger-color;
+    color: $light-color;
+    padding: 5px 10px;
+    border-radius: 4px;
+    cursor: pointer;
+
+    &:hover {
+      background-color: color.adjust($danger-color, $lightness: 10%);
+    }
+  }
+}

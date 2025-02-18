@@ -1,0 +1,19 @@
+<div class="transactions-list">
+  <h2 class="text-center text-bold text-dark">Bank Transactions</h2>
+  @if(transactions.length > 0){
+  <ag-grid-angular
+    style="height: 800px; width: 100%"
+    [defaultColDef]="defaultColDef"
+    [modules]="modules"
+    class="ag-theme-alpine"
+    [rowData]="transactions"
+    [columnDefs]="columnDefs"
+    [gridOptions]="gridOptions"
+    (cellValueChanged)="cellValueChanged($event)"
+    appSuspiciousHighlight="100"
+  >
+  </ag-grid-angular>
+  } @else{ 
+  <h6 class="text-danger text-center">Please upload csv file</h6>
+  }
+</div>

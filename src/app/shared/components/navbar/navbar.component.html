@@ -1,0 +1,12 @@
+<nav class="navbar">
+  <div class="navbar-left">
+    <a (click)="home()"class="navbar-brand">Bank Statement Analyzer</a>
+    <a (click)="transactionDetails()" class="navbar-link">Transaction Details</a>
+  </div>
+  <div class="navbar-right">
+    <a (click)="fileUpload()" class="navbar-link">File Upload</a>
+    <button class="btn btn-danger" *ngIf="isLoggedIn" (click)="logout()">
+      Logout
+    </button>
+  </div>
+</nav>

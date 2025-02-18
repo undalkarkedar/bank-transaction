@@ -1,0 +1,178 @@
+/* You can add global styles to this file, and also import other style files */
+// Apply Global Styles
+
+
+
+@use 'styles/variables' as *;
+@use "sass:color";
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  font-family: $font-family;
+  font-size: $font-base-size;
+  font-weight: $font-weight-regular;
+  background-color: $background-color;
+  color: $text-color;
+  height: 100%;
+}
+
+// Headings
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: $font-family;
+  font-weight: $font-weight-bold;
+  color: $text-color;
+}
+
+h1 {
+  font-size: 32px;
+}
+h2 {
+  font-size: 28px;
+}
+h3 {
+  font-size: 24px;
+}
+h4 {
+  font-size: 20px;
+}
+h5 {
+  font-size: 18px;
+}
+h6 {
+  font-size: 16px;
+}
+
+// Utility Classes for Typography
+.text-small {
+  font-size: $font-size-small;
+}
+.text-large {
+  font-size: $font-size-large;
+}
+.text-bold {
+  font-weight: $font-weight-bold;
+}
+.text-light {
+  font-weight: $font-weight-light;
+}
+.text-uppercase {
+  text-transform: uppercase;
+}
+.text-center {
+  text-align: center;
+}
+.text-left {
+  text-align: left;
+}
+.text-right {
+  text-align: right;
+}
+
+// Wrapper for the main app
+.app-container {
+  max-width: $max-width;
+  margin: 0 auto;
+  padding: $spacing-unit * 2;
+}
+.text-danger{
+  color:$danger-color;
+}
+.text-success{
+  color:$success-color;
+}
+// Flexbox Utility Classes
+.flex {
+  display: flex;
+}
+.flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.flex-space-between {
+  display: flex;
+  justify-content: space-between;
+}
+.flex-column {
+  display: flex;
+  flex-direction: column;
+}
+
+// Buttons
+.btn {
+  padding: $spacing-unit $spacing-unit * 2;
+  margin: 2px;
+  border-radius: 4px;
+  font-size: 14px;
+  font-weight: bold;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: background 0.3s ease-in-out;
+  border: none;
+}
+
+.btn-primary {
+  background-color: $primary-color;
+  color: white;
+  &:hover {
+    background-color: color.adjust($primary-color, $lightness: 10%);
+  }
+}
+
+.btn-danger {
+  background-color: $danger-color;
+  color: white;
+  &:hover {
+    background-color: color.adjust($danger-color, $lightness: 10%);
+  }
+}
+
+// Tables (Ag-Grid Styling)
+.ag-theme-alpine {
+  flex:1;;
+  min-width: 100%;
+  font-size: 14px;
+  --ag-header-background-color: $primary-color;
+  --ag-header-foreground-color: white;
+  --ag-odd-row-background-color: $light-color;
+}
+
+// Suspicious Transactions
+.suspicious-transaction {
+  background-color: $suspicious-color;
+  color: white;
+}
+
+.suspicious-transaction {
+  background-color: rgba(255, 87, 51, 0.3);
+  color: #fff;
+  font-weight: bold;
+  border-left: 5px solid $suspicious-color;
+}
+
+// Media Queries for Mobile
+@media screen and (max-width: 768px) {
+  .app-container {
+    padding: $spacing-unit;
+  }
+
+  .btn {
+    font-size: 12px;
+  }
+
+  .ag-theme-alpine {
+    font-size: 12px;
+  }
+}

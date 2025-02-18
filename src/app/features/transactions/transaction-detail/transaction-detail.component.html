@@ -1,0 +1,52 @@
+<div *ngIf="loading">Loading transaction details...</div>
+<div *ngIf="error">{{ error }}</div>
+
+<ng-container *ngIf="transaction">
+  <ng-template
+    [ngTemplateOutlet]="transactionDetailsTemplate"
+    [ngTemplateOutletContext]="{ transaction: transaction, isSingle: true }"
+  >
+  </ng-template>
+</ng-container>
+
+<ng-container *ngIf="transactions$ | async as transactions">
+  <div *ngFor="let item of transactions; trackBy: trackById">
+    <ng-template
+      [ngTemplateOutlet]="transactionDetailsTemplate"
+      [ngTemplateOutletContext]="{ transaction: item, isSingle: false }"
+    >
+    </ng-template>
+  </div>
+  <div *ngIf="transactions?.length === 0">
+    <h5 class="text-danger text-center">There are no transaction details.</h5>
+  </div>
+</ng-container>
+
+<ng-template
+  #transactionDetailsTemplate
+  let-transaction="transaction"
+  let-isSingle="isSingle"
+>
+  <div class="transaction-detail">
+    <div class="detail-header">
+      <h2 class="text-center"> {{isSingle ? 'Transaction Detail':'Transaction Details'}}</h2>
+      <div class="btn-group">
+        <button class="btn btn-primary" (click)="editTransaction(transaction)">
+          Edit
+        </button>
+        <button  class="btn btn-secondary" (click)="goBack()">
+          Back
+        </button>
+      </div>
+    </div>
+
+    <div class="transaction-info">
+      <p class="info-item">Transaction ID: #{{ transaction.id }}</p>
+      <p class="info-item">Description: {{ transaction.description }}</p>
+      <p class="info-item">Date: {{ transaction.date }}</p>
+      <p class="info-item">Amount: ${{ transaction.amount }}</p>
+      <p class="info-item">Card: {{ transaction.type }}</p>
+      <p class="info-item">Account Number: {{ transaction.accountNumber }}</p>
+    </div>
+  </div>
+</ng-template>

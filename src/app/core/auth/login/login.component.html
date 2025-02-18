@@ -1,0 +1,19 @@
+<div class="login-container">
+  <div class="login-form">
+    <h2>Bank Transation</h2>
+    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+      <div class="form-group">
+        <label for="username">Username:</label> <input type="text" id="username" formControlName="username" />
+        <div class="text-danger text-center" *ngIf="loginForm.get('username')?.invalid && (loginForm.get('username')?.dirty || loginForm.get('username')?.touched)" class="error-message">
+          Username is required.
+        </div>
+      </div>
+
+      <button type="submit" class="btn btn-primary" [disabled]="loginForm.invalid || loading">
+        <span *ngIf="loading" class="spinner-border spinner-border-sm me-2" role="status"></span>
+        Login
+      </button>
+    </form>
+    <h5 *ngIf="error" class="text-danger text-center">{{ error }}</h5>
+  </div>
+</div>
