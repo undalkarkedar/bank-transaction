@@ -1,7 +1,7 @@
 [build]
-  base = ""
+  base = "/"
   publish = "dist/bank-transaction/browser"
-  command = "npm run build --prod"
+  command = "npm run build"
 
 [[redirects]]
   from = "/*"
