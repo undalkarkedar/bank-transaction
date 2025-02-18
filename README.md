@@ -57,3 +57,31 @@ Angular CLI does not come with an end-to-end testing framework by default. You c
 ## Additional Resources
 
 For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+## Setup 
+1.Install Node.js → Version 18.20.3
+2.Install Angular → Version 19.2
+3.Navigate to Project Folder → Run
+  cd your-project-folder
+  npm install
+4.Run the Application → Open in the default browser
+  ng server --o
+
+## Future Improvement
+1.Implement Data Security → Add encryption & decryption for data integrity.
+2.Improve UI for Mobile → Make the application fully responsive.
+3.Integrate Authentication → Add an HTTP Interceptor for authentication & authorization.
+4.Connect to Backend → Implement actual APIs and backend services.
+5.Enhance UI Design → Create an elegant, user-friendly UI.
+6.Optimize Performance →
+  .Improve Ag-Grid Performance (Lazy loading, Virtual Scrolling).
+  .Reduce Unnecessary API Calls using caching.
+  .Optimize Change Detection with OnPush strategy.
+  .Improve Directive Efficiency for highlighting transactions.
+
+## know Issues
+1.Custom Directive (appSuspiciousHighlighter) Not Working Properly
+ .The directive is implemented but not highlighting transactions correctly.
+ .Possible Fix: Debug the Directive Selector & Input Property.
+
+2.Single Detail View & List View Should Use the Same Component
+ .Need to refactor the component to support both single transaction details and multi transaction view dynamically.
