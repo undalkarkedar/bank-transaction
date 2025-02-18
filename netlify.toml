@@ -1,1 +1,10 @@
-/* /index.html 200
+[build]
+  base = "bank-transaction-app"
+  command = "npm run build"
+  publish = "dist/browser"
+
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
+  force = true
